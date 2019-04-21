@@ -1,0 +1,109 @@
+module decoder(INST, DR, SA, SB, IMM, MB, FS, MD, LD, MW, BS, OFF, HALT);
+
+//inputs
+input [15:0] INST;
+
+//outputs
+output  [2:0] DR;
+output  [2:0] SA;
+output  [2:0] SB;
+output  [5:0] IMM;
+output  MB;
+output  [2:0] FS;
+output  MD;
+output  LD;
+output  MW;
+output  [2:0] BS;
+output  [5:0] OFF:
+output  HALT;
+
+
+assign DR = 3'b000;
+assign SA = 3'b000;
+assign SB = 3'b000;
+assign IMM = 6'b000000;
+assign MB = 1'b0;
+assign FS = 3'b000;
+assign MD = 1'b0;
+assign LD = 1'b0;
+assign MW = 1'b0;
+assign BS = 3'b000;
+assign OFF = 6'b000000;
+assign HALT = 1'b0;
+
+  if (INST[15:12] == 4'b0000) begin
+
+values
+    //HALT
+    if(INST[2:0]!=000) begin
+      assign HALT = 1'b1;
+    end
+  end
+
+  else if (INST[15:12] == 4'b1111) begin
+    assign DR = INST[5:3];
+    assign SA = INST[11:9];
+    assign SB = INST[8:6];
+    assign LD = 1'b1;
+    assign FS = INST[2:0];
+
+  end
+
+  else begin
+    assign SA = INST[11:9];
+    assign IMM = INST[5:0];
+    case(INST[15:12])
+      //LB
+      4'b0010:
+        assign DR = INST[5:3];
+        assign MB = 1'b1;
+        assign FS = 3'b000;
+        assign MD = 1'b1;
+        assign LD = 1'b1;
+        assign MW = 1'b0;
+
+      //SB
+      4'b0100:
+        assign SB = INST[8:6];
+        assign MB = 1b'1;
+        assign LD = 1b'0;
+        assign MW = 1b'1;
+
+      //ADDI
+      4'b0101:
+        assign DR = INST[5:3];
+        assign MB = 1'b1;
+        assign FS = 3'b000;
+        assign MD = 1'b0;
+        assign LD = 1'b1;
+        assign MW = 1'b0;
+
+      //ANDI
+      4'b0110:
+        assign DR = INST[5:3];
+        assign MB = 1'b1;
+        assign FS = 3'b101;
+        assign MD = 1'b1;
+        assign LD = 1'b1;
+        assign MW = 1'b0;
+
+      //ORI
+      4'b0111:
+        assign DR = INST[8:6];
+        assign SA = INST[11:9];
+        assign MB = 1b'1;
+        assign FS = 3b'110;
+        assign MD = 1b'0
+        assign LD = 1b'1
+        assign MW = 1b'0
+
+      default:
+        //NOP
+        assign IMM = 4b'0000;
+
+    endcase
+  end
+
+end
+
+endmodule

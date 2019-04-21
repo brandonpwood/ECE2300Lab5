@@ -1,0 +1,214 @@
+# Reading C:/intelFPGA/17.1/modelsim_ase/tcl/vsim/pref.tcl
+# do decoder_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/IntelFPGA/17.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/cit-labs/Desktop/ECE2300Lab5-master {C:/Users/cit-labs/Desktop/ECE2300Lab5-master/decoder.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:05:16 on Apr 21,2019
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/cit-labs/Desktop/ECE2300Lab5-master" C:/Users/cit-labs/Desktop/ECE2300Lab5-master/decoder.v 
+# -- Compiling module decoder
+# 
+# Top level modules:
+# 	decoder
+# End time: 18:05:16 on Apr 21,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/cit-labs/Desktop/ECE2300Lab5-master {C:/Users/cit-labs/Desktop/ECE2300Lab5-master/decoder_test.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:05:16 on Apr 21,2019
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/cit-labs/Desktop/ECE2300Lab5-master" C:/Users/cit-labs/Desktop/ECE2300Lab5-master/decoder_test.v 
+# -- Compiling module decoder_test
+# 
+# Top level modules:
+# 	decoder_test
+# End time: 18:05:16 on Apr 21,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  decoder_test
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" decoder_test 
+# Start time: 18:05:16 on Apr 21,2019
+# Loading work.decoder_test
+# Loading work.decoder
+# ** Warning: (vsim-3017) C:/Users/cit-labs/Desktop/ECE2300Lab5-master/decoder_test.v(34): [TFMPC] - Too few port connections. Expected 13, found 10.
+#    Time: 0 ps  Iteration: 0  Instance: /decoder_test/dec File: C:/Users/cit-labs/Desktop/ECE2300Lab5-master/decoder.v
+# ** Warning: (vsim-3722) C:/Users/cit-labs/Desktop/ECE2300Lab5-master/decoder_test.v(34): [TFMPC] - Missing connection for port 'BS'.
+# ** Warning: (vsim-3722) C:/Users/cit-labs/Desktop/ECE2300Lab5-master/decoder_test.v(34): [TFMPC] - Missing connection for port 'OFF'.
+# ** Warning: (vsim-3722) C:/Users/cit-labs/Desktop/ECE2300Lab5-master/decoder_test.v(34): [TFMPC] - Missing connection for port 'HALT'.
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# MSIM> 
+# MSIM> # 0
+# MSIM> INST = [0000][000][000][000000] (imm)
+# MSIM>   DR  = 000			[ OK ]
+# MSIM>   SA  = 000			[ OK ]
+# MSIM>   SB  = 000			[ OK ]
+# MSIM>   IMM = 000000		[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 000			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM> 
+# MSIM> # 1
+# MSIM> INST = [1111][010][011][101][000] (r2r)
+# MSIM>   DR  = 101			[ OK ]
+# MSIM>   SA  = 010			[ OK ]
+# MSIM>   SB  = 011			[ OK ]
+# MSIM>   IMM = 000000		[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 000			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM> 
+# MSIM> # 2
+# MSIM> INST = [1111][001][010][011][001] (r2r)
+# MSIM>   DR  = 011			[ OK ]
+# MSIM>   SA  = 001			[ OK ]
+# MSIM>   SB  = 010			[ OK ]
+# MSIM>   IMM = 000000		[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 001			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM> 
+# MSIM> # 3
+# MSIM> INST = [1111][010][001][100][010] (r2r)
+# MSIM>   DR  = 100			[ OK ]
+# MSIM>   SA  = 010			[ OK ]
+# MSIM>   SB  = 000			[ OK ]
+# MSIM>   IMM = 000000		[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 010			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM> 
+# MSIM> # 4
+# MSIM> INST = [1111][010][001][100][011] (r2r)
+# MSIM>   DR  = 100			[ OK ]
+# MSIM>   SA  = 010			[ OK ]
+# MSIM>   SB  = 000			[ OK ]
+# MSIM>   IMM = 000000		[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 011			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM> 
+# MSIM> # 5
+# MSIM> INST = [1111][010][001][100][100] (r2r)
+# MSIM>   DR  = 100			[ OK ]
+# MSIM>   SA  = 010			[ OK ]
+# MSIM>   SB  = 000			[ OK ]
+# MSIM>   IMM = 000000		[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 100			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM> 
+# MSIM> # 6
+# MSIM> INST = [1111][010][001][100][101] (r2r)
+# MSIM>   DR  = 100			[ OK ]
+# MSIM>   SA  = 010			[ OK ]
+# MSIM>   SB  = 001			[ OK ]
+# MSIM>   IMM = 000000		[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 101			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM> 
+# MSIM> # 7
+# MSIM> INST = [1111][010][001][100][110] (r2r)
+# MSIM>   DR  = 100			[ OK ]
+# MSIM>   SA  = 010			[ OK ]
+# MSIM>   SB  = 001			[ OK ]
+# MSIM>   IMM = 000000		[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 110			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM> 
+# MSIM> # 8
+# MSIM> INST = [0010][001][010][000001] (imm)
+# MSIM>   DR  = 010			[ OK ]
+# MSIM>   SA  = 001			[ OK ]
+# MSIM>   SB  = 000			[ OK ]
+# MSIM>   IMM = 000001		[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 000			[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM> 
+# MSIM> # 9
+# MSIM> INST = [0100][001][010][000001] (imm)
+# MSIM>   DR  = 000			[ OK ]
+# MSIM>   SA  = 001			[ OK ]
+# MSIM>   SB  = 010			[ OK ]
+# MSIM>   IMM = 000001		[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 000			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM> 
+# MSIM> #10
+# MSIM> INST = [0101][110][111][000001] (imm)
+# MSIM>   DR  = 111			[ OK ]
+# MSIM>   SA  = 110			[ OK ]
+# MSIM>   SB  = 000			[ OK ]
+# MSIM>   IMM = 000001		[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 000			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM> 
+# MSIM> #11
+# MSIM> INST = [0110][110][111][000001] (imm)
+# MSIM>   DR  = 111			[ OK ]
+# MSIM>   SA  = 110			[ OK ]
+# MSIM>   SB  = 000			[ OK ]
+# MSIM>   IMM = 000001		[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 101			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM> 
+# MSIM> #12
+# MSIM> INST = [0111][110][111][000001] (imm)
+# MSIM>   DR  = 111			[ OK ]
+# MSIM>   SA  = 110			[ OK ]
+# MSIM>   SB  = 000			[ OK ]
+# MSIM>   IMM = 000001		[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 110			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM>   MB  = 1			[ OK ]
+# MSIM>   MB  = 0			[ OK ]
+# MSIM> 
+# MSIM> Prelab 5b Score: 13 / 13
+# ** Note: $stop    : C:/Users/cit-labs/Desktop/ECE2300Lab5-master/decoder_test.v(667)
+#    Time: 1400 ns  Iteration: 0  Instance: /decoder_test
+# Break in Module decoder_test at C:/Users/cit-labs/Desktop/ECE2300Lab5-master/decoder_test.v line 667
+# End time: 18:05:58 on Apr 21,2019, Elapsed time: 0:00:42
+# Errors: 0, Warnings: 4

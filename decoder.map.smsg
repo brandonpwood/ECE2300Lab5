@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at decoder.v(34): always construct contains both blocking and non-blocking assignments File: C:/Users/cit-labs/Desktop/ECE2300Lab5-master/decoder.v Line: 34
