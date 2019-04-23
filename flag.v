@@ -19,9 +19,9 @@ module flag(Ytemp0, Ytemp1, Ytemp2, OP, Ca, Cs, Va, Y, N, V, C, Z);
     // Adder
      C <= Ca;
      V <= Va;
-     N <= Y[7];
-     Z <= (Y == 0) ? 1'b1 : 1'b0;
      Y <= Ytemp2;
+     N <= Y[7];
+	  Z <= (Y == 0) ? 1'b1 : 1'b0;
   end
   
  else if (OP == 3'b101 | OP == 3'b110)
@@ -29,9 +29,10 @@ module flag(Ytemp0, Ytemp1, Ytemp2, OP, Ca, Cs, Va, Y, N, V, C, Z);
     // Logic
      C <= 0;
      V <= 0;
+	  Y <= Ytemp0;
      N <= Y[7];
-     Z <= (Y == 0) ? 1'b1 : 1'b0;
-     Y <= Ytemp0;
+	  Z <= (Y == 0) ? 1'b1 : 1'b0;
+
 	end
 	
   else 
@@ -39,9 +40,10 @@ module flag(Ytemp0, Ytemp1, Ytemp2, OP, Ca, Cs, Va, Y, N, V, C, Z);
     // Shifter
      C <= Cs;
      V <= 0;
+     Y <= Ytemp1;
      N <= Y[7];
      Z <= (Y == 0) ? 1'b1 : 1'b0;
-     Y <= Ytemp1;
+
   end
   end
 endmodule
