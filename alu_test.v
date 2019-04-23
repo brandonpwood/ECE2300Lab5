@@ -83,8 +83,42 @@ module alu_test();
     $display("MSIM>");
     
     // EXAMPLE TEST CASE: this is the end of the first test case
-
     
+	 A  = 8'haa;
+    B  = 8'hff;
+    OP = 3'b011;  // SRL
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'h55 && C == 1'b0 && V == 1'b0 && N == 1'b0 && Z == 1'b0) begin
+      $display("MSIM> SRL (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: SRL (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 55), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 0), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+	 
+	 
+	 A  = 8'hff;
+    B  = 8'h22;
+    OP = 3'b011;  // SRL
+    
+    #100;  // wait for input signals to propagate through circuit
+    
+    $display("MSIM>");
+    if(Y == 8'h7f && C == 1'b1 && V == 1'b0 && N == 1'b0 && Z == 1'b0) begin
+      $display("MSIM> SRL (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      $display("MSIM> ERROR: SRL (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 7f), C = %1b (should be 1), V = %1b (should be 0), N = %1b (should be 0), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+	 
+	   
     A  = 8'haa;
     B  = 8'hc3;
     OP = 3'b101;  // AND
@@ -99,57 +133,328 @@ module alu_test();
       $display("MSIM> ERROR: AND (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 82), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
     end
     $display("MSIM>");
-    
-    
-    // ADD YOUR TEST CASES BELOW THIS LINE
-    A  = 8'h00;
-    B  = 8'h01;
-    OP = 3'b001;  // Subtract
+	 
+	 A  = 8'h0;
+    B  = 8'h0;
+    OP = 3'b101;  // AND
     
     #100;  // wait for input signals to propagate through circuit
     
-
     $display("MSIM>");
-    if(Y == 8'h11 && C == 1'b0 && V == 1'b0 && N == 1'b1 && Z == 1'b0) begin
+    if(Y == 8'h0 && C == 1'b0 && V == 1'b0 && N == 1'b0 && Z == 1'b1) begin
       $display("MSIM> AND (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
     end
     else begin
-      $display("MSIM> ERROR: AND (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 82), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+      $display("MSIM> ERROR: AND (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 0), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 0), Z = %1b (should be 1)", OP, A, B, Y, C, V, N, Z);
     end
     $display("MSIM>");
-
-	 A  = 8'h10;
-    B  = 8'h01;
+	 
+	 
+	 A  = 8'hff;
+    B  = 8'hff;
+    OP = 3'b101;  // AND
+    
+    #100;  // wait for input signals to propagate through circuit
+    
+    $display("MSIM>");
+    if(Y == 8'hff && C == 1'b0 && V == 1'b0 && N == 1'b1 && Z == 1'b0) begin
+      $display("MSIM> AND (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      $display("MSIM> ERROR: AND (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be ff), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");	 
+	 
+    
+	 A  = 8'h03;
+    B  = 8'had;
     OP = 3'b110;  // OR
     
+    // ... it includes a wait...
     #100;  // wait for input signals to propagate through circuit
     
-
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
     $display("MSIM>");
-    if(Y == 8'h11 && C == 1'b0 && V == 1'b0 && N == 1'b1 && Z == 1'b0) begin
-      $display("MSIM> AND (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    if(Y == 8'haf && C == 1'b0 && V == 1'b0 && N == 1'b1 && Z == 1'b0) begin
+      $display("MSIM> OR (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
     end
     else begin
-      $display("MSIM> ERROR: AND (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 82), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: OR(OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be af), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
     end
     $display("MSIM>");
 	 
-	 A  = 8'b11111110;
-    B  = 8'h01;
-    OP = 3'b010;  // Right Shift
+	 
+	 A  = 8'h00;
+    B  = 8'h00;
+    OP = 3'b110;  // OR
     
+    // ... it includes a wait...
     #100;  // wait for input signals to propagate through circuit
     
-
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
     $display("MSIM>");
-    if(Y == 8'b01111111 && C == 1'b0 && V == 1'b0 && N == 1'b0 && Z == 1'b0) begin
-      $display("MSIM> AND (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    if(Y == 8'h00 && C == 1'b0 && V == 1'b0 && N == 1'b0 && Z == 1'b1) begin
+      $display("MSIM> OR (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
     end
     else begin
-      $display("MSIM> ERROR: AND (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 82), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: OR(OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 00), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 0), Z = %1b (should be 1)", OP, A, B, Y, C, V, N, Z);
     end
     $display("MSIM>");
 	 
+	 
+	 A  = 8'hff;
+    B  = 8'h00;
+    OP = 3'b110;  // OR
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'hff && C == 1'b0 && V == 1'b0 && N == 1'b1 && Z == 1'b0) begin
+      $display("MSIM> OR (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: OR(OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be ff), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");	 
+	 
+	 
+	 A  = 8'haf;
+    B  = 8'hff;
+    OP = 3'b010;  // SRA
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'hd7 && C == 1'b1 && V == 1'b0 && N == 1'b1 && Z == 1'b0) begin
+      $display("MSIM> SRA (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: SRA (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be d7), C = %1b (should be 1), V = %1b (should be 0), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+	 
+	 
+	 A  = 8'h32;
+    B  = 8'haa;
+    OP = 3'b010;  // SRA
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'h19 && C == 1'b0 && V == 1'b0 && N == 1'b0 && Z == 1'b0) begin
+      $display("MSIM> SRA (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: SRA (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 19), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 0), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+	 
+	 
+	 A  = 8'h0a;
+    B  = 8'hff;
+    OP = 3'b100;  // SLL
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'h14 && C == 1'b0 && V == 1'b0 && N == 1'b0 && Z == 1'b0) begin
+      $display("MSIM> SLL (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: SLL (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 14), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 0), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+	
+
+	
+	 A  = 8'hf8;
+    B  = 8'hab;
+    OP = 3'b100;  // SLL
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'hf0 && C == 1'b1 && V == 1'b0 && N == 1'b1 && Z == 1'b0) begin
+      $display("MSIM> SLL (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: SLL (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be f0), C = %1b (should be 1), V = %1b (should be 0), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+	 
+	 
+	 A  = 8'h7f;
+    B  = 8'h00;
+    OP = 3'b100;  // SLL
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'hfe && C == 1'b0 && V == 1'b0 && N == 1'b1 && Z == 1'b0) begin
+      $display("MSIM> SLL (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: SLL (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be fd), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+	 
+	 
+	 A  = 8'h0a;
+    B  = 8'ha0;
+    OP = 3'b000;  // ADD
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'haa && C == 1'b0 && V == 1'b0 && N == 1'b1 && Z == 1'b0) begin
+      $display("MSIM> ADD (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: ADD (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be aa), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+
+
+	 A  = 8'hff;
+    B  = 8'hff;
+    OP = 3'b000;  // ADD
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'hfe && C == 1'b1 && V == 1'b0 && N == 1'b1 && Z == 1'b0) begin
+      $display("MSIM> ADD (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: ADD (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be fe), C = %1b (should be 1), V = %1b (should be 1), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+
+
+
+	 A  = 8'h7f;
+    B  = 8'h7f;
+    OP = 3'b000;  // ADD
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'hfe && C == 1'b0 && V == 1'b1 && N == 1'b1 && Z == 1'b0) begin
+      $display("MSIM> ADD (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: ADD (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be fe), C = %1b (should be 0), V = %1b (should be 1), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+	 
+	 
+	 A  = 8'h80;
+    B  = 8'h82;
+    OP = 3'b000;  // ADD
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'h02 && C == 1'b1 && V == 1'b1 && N == 1'b0 && Z == 1'b0) begin
+      $display("MSIM> ADD (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: ADD (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 02), C = %1b (should be 1), V = %1b (should be 1), N = %1b (should be 0), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+
+
+	 
+	 A  = 8'h0a;
+    B  = 8'h02;
+    OP = 3'b001;  // SUBTRACT
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'h08 && C == 1'b1 && V == 1'b0 && N == 1'b0 && Z == 1'b0) begin
+      $display("MSIM> SUB (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: SUB (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 08), C = %1b (should be 1), V = %1b (should be 0), N = %1b (should be 0), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+	 
+	 
+	 A  = 8'h82;
+    B  = 8'h7d;
+    OP = 3'b001;  // SUBTRACT
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'h05 && C == 1'b1 && V == 1'b1 && N == 1'b0 && Z == 1'b0) begin
+      $display("MSIM> SUB (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: SUB (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 05), C = %1b (should be 1), V = %1b (should be 1), N = %1b (should be 0), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+	 
+	 
+	 A  = 8'h80;
+    B  = 8'h00;
+    OP = 3'b001;  // SUBTRACT
+    
+    // ... it includes a wait...
+    #100;  // wait for input signals to propagate through circuit
+    
+    // ... and it includes a statement that checks all of the outputs against the values we expect, and prints whether the operation was correct
+    $display("MSIM>");
+    if(Y == 8'h80 && C == 1'b0 && V == 1'b0 && N == 1'b1 && Z == 1'b0) begin
+      $display("MSIM> SUB (OP = %3b) is correct for A = %2h, B = %2h: Y = %2h, C = %1b, V = %1b, N = %1b, Z = %1b", OP, A, B, Y, C, V, N, Z);
+    end
+    else begin
+      // note that we have to fill in the expected values by hand here, so we can make sure what our outputs should have been
+      $display("MSIM> ERROR: SUB (OP = %3b) is incorrect for A = %2h, B = %2h: Y = %2h (should be 80), C = %1b (should be 0), V = %1b (should be 0), N = %1b (should be 1), Z = %1b (should be 0)", OP, A, B, Y, C, V, N, Z);
+    end
+    $display("MSIM>");
+	 
+
+
     // ADD YOUR TEST CASES ABOVE THIS LINE
     
 
