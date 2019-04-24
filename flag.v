@@ -17,33 +17,31 @@ module flag(Ytemp0, Ytemp1, Ytemp2, OP, Ca, Cs, Va, Y, N, V, C, Z);
   always @(*) begin
   if ((OP[2] == 1'b0 ) & (OP[1] == 1'b0))begin
     // Adder
-     C <= Ca;
-     V <= Va;
-     Y <= Ytemp2;
-     N <= Y[7];
-	  Z <= (Y == 0) ? 1'b1 : 1'b0;
+     C = Ca;
+     V = Va;
+	  Y = Ytemp2;
+     N = Y[7];
+     Z = (Y == 0) ? 1'b1 : 1'b0;
   end
   
  else if (OP == 3'b101 | OP == 3'b110)
 	begin 
     // Logic
-     C <= 0;
-     V <= 0;
-	  Y <= Ytemp0;
-     N <= Y[7];
-	  Z <= (Y == 0) ? 1'b1 : 1'b0;
-
+     C = 0;
+     V = 0;
+	  Y = Ytemp0;
+     N = Y[7];
+     Z = (Y == 0) ? 1'b1 : 1'b0;
 	end
 	
   else 
   begin
     // Shifter
-     C <= Cs;
-     V <= 0;
-     Y <= Ytemp1;
-     N <= Y[7];
-     Z <= (Y == 0) ? 1'b1 : 1'b0;
-
+     C = Cs;
+     V = 0;
+	  Y = Ytemp1;
+     N = Y[7];
+     Z = (Y == 0) ? 1'b1 : 1'b0;
   end
   end
 endmodule
