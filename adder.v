@@ -24,7 +24,7 @@ module adder(A, B, CI, Y, C, V); // add all inputs and outputs inside parenthese
   fullAdder A7(.A(A[7]), .B(B[7]), .Cin(carry[6]), .Cout(carry[7]), .S(Y[7]) );
   
   assign C = carry[7];
-  assign V = A&B&(~C) | (~A&~B&C);
+  assign V = A[7]&B[7]&(~C) | (~A[7]&~B[7]&C);
   
   
 endmodule
