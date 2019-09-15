@@ -3,7 +3,7 @@ Cathy Li (jl3235)
 Prelab 5b due 22APR19
 TESTING DOCUMENTATION
 
-For all our test cases we asaerted "don't care" terms to 0 for testing convenience.
+For all our test cases we asserted "don't care" terms to 0 for testing convenience.
 
 TEST 1 -- We assert that NOP produces all 0s
 TEST 2 -- We assert that the decoder produces the correct signals for the ADD instruction using instruction INST = 16'b1111010011101000
